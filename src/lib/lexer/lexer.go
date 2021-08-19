@@ -19,6 +19,7 @@ func (b* Builder) Run() ([]Token, error) {
 	wordBytes := make([]byte, 0)
 	for _, symbol := range b.input {
 		if symbol == whiteSpace {
+			tokens = append(tokens, NewToken(string(symbol)))
 			tokens = append(tokens, NewToken(string(wordBytes)))
 
 			wordBytes = make([]byte, 0)
