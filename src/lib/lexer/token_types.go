@@ -6,4 +6,5 @@ const (
 	TokenTypeEof	= iota
 	TokenTypeNumber
 	TokenTypeExtern
+	TokenTypeNewLine
 )

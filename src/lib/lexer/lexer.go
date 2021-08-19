@@ -7,6 +7,7 @@ type Builder struct {
 
 const (
 	whiteSpace = ' '
+	newLine    = '\n'
 )
 
 func (b* Builder) SetInput(input []byte) {
@@ -18,7 +19,7 @@ func (b* Builder) Run() ([]Token, error) {
 
 	wordBytes := make([]byte, 0)
 	for _, symbol := range b.input {
-		if symbol == whiteSpace {
+		if symbol == whiteSpace || symbol == newLine {
 			tokens = append(tokens, NewToken(string(symbol)))
 			tokens = append(tokens, NewToken(string(wordBytes)))
 

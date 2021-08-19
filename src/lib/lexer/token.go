@@ -21,6 +21,10 @@ func getTokenType(data string) TokenType {
 		return TokenTypeEof
 	}
 
+	if data == "\n" {
+		return TokenTypeNewLine
+	}
+
 	_, err := strconv.Atoi(data)
 	if err == nil {
 		return TokenTypeNumber
