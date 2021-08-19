@@ -19,9 +19,17 @@ func (b* Builder) Run() ([]Token, error) {
 
 	wordBytes := make([]byte, 0)
 	for _, symbol := range b.input {
-		if symbol == whiteSpace || symbol == newLine {
-			tokens = append(tokens, NewToken(string(symbol)))
-			tokens = append(tokens, NewToken(string(wordBytes)))
+		// todo: refactor it
+		if isSpecialSymbol(symbol) || isWhiteSpace(symbol) {
+			data := string(wordBytes)
+			if data == "" {
+				continue
+			}
+
+			tokens = append(tokens, NewToken(data))
+			if isSpecialSymbol(symbol) {
+				tokens = append(tokens, NewToken(string(symbol)))
+			}
 
 			wordBytes = make([]byte, 0)
 			continue
@@ -35,4 +43,12 @@ func (b* Builder) Run() ([]Token, error) {
 
 	b.tokens = tokens
 	return tokens, nil
+}
+
+func isWhiteSpace(symbol byte) bool {
+	return symbol == whiteSpace
+}
+
+func isSpecialSymbol(symbol byte) bool {
+	return symbol == newLine
 }

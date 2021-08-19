@@ -17,12 +17,8 @@ func NewToken(data string) Token {
 }
 
 func getTokenType(data string) TokenType {
-	if data == " " {
-		return TokenTypeEof
-	}
-
 	if data == "\n" {
-		return TokenTypeNewLine
+		return TokenTypeEof
 	}
 
 	_, err := strconv.Atoi(data)
