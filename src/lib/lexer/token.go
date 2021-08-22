@@ -26,5 +26,10 @@ func getTokenType(data string) TokenType {
 		return TokenTypeNumber
 	}
 
+	_, err = strconv.ParseFloat(data, 64)
+	if err == nil {
+		return TokenTypeNumber
+	}
+
 	return TokenTypeExtern
 }
