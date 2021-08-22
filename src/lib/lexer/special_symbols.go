@@ -11,6 +11,7 @@ const (
 	symbolBraceClose         = '}'
 	symbolPlus               = '+'
 	symbolMinus              = '-'
+	symbolMod                = '%'
 	symbolEqual              = '='
 	symbolStar               = '*'
 	symbolComma              = ','
@@ -22,7 +23,7 @@ const (
 )
 
 func getAllSpecialSymbols() []byte {
-	return []byte {
+	return []byte{
 		symbolWhiteSpace,
 		symbolNewLine,
 		symbolBracketOpen,
@@ -41,6 +42,7 @@ func getAllSpecialSymbols() []byte {
 		symbolColon,
 		symbolExclamationMark,
 		symbolQuestionMark,
+		symbolMod,
 	}
 }
 

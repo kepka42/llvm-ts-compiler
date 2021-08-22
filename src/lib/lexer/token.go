@@ -1,7 +1,5 @@
 package lexer
 
-import "strconv"
-
 type Token struct {
 	Data string
 	Type TokenType
@@ -14,22 +12,4 @@ func NewToken(data string) Token {
 	}
 
 	return token
-}
-
-func getTokenType(data string) TokenType {
-	if data == "\n" {
-		return TokenTypeEof
-	}
-
-	_, err := strconv.Atoi(data)
-	if err == nil {
-		return TokenTypeNumber
-	}
-
-	_, err = strconv.ParseFloat(data, 64)
-	if err == nil {
-		return TokenTypeNumber
-	}
-
-	return TokenTypeExtern
 }
