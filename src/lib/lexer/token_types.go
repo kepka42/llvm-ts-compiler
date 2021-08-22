@@ -3,7 +3,7 @@ package lexer
 type TokenType int32
 
 const (
-	TokenTypeEof	= iota
+	TokenTypeEof = iota
 	TokenTypeNumber
 	TokenTypeExtern
 )
