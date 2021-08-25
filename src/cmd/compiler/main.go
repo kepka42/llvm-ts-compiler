@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"github.com/kepka42/llvm-ts-compiler/src/lib/ast"
 	"github.com/kepka42/llvm-ts-compiler/src/lib/lexer"
 	"io/ioutil"
 	"os"
@@ -23,7 +24,14 @@ func main() {
 	builder := lexer.Builder{}
 	builder.SetInput(data)
 
-	_, err = builder.Run()
+	tokens, err := builder.Run()
+	if err != nil {
+		panic(err)
+	}
+
+	tree := ast.NewTree()
+
+	err = tree.Build(tokens)
 	if err != nil {
 		panic(err)
 	}
