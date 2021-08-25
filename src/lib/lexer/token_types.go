@@ -5,7 +5,7 @@ import "strconv"
 type TokenType int32
 
 const (
-	TokenTypeEof = iota
+	TokenTypeEof TokenType = iota
 	TokenTypeNumber
 	TokenTypeMul
 	TokenTypeAdd
