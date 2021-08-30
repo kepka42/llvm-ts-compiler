@@ -13,7 +13,7 @@ func NewTree() *Tree {
 	return &Tree{}
 }
 
-func (t *Tree) Build(tokens []lexer.Token) error {
+func (t *Tree) Build(tokens lexer.TokenBuffer) error {
 	t.root = new(node.Program)
 	return nil
 }

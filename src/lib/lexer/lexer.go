@@ -1,15 +1,14 @@
 package lexer
 
 type Builder struct {
-	input  []byte
-	tokens []Token
+	input []byte
 }
 
 func (b *Builder) SetInput(input []byte) {
 	b.input = input
 }
 
-func (b *Builder) Run() ([]Token, error) {
+func (b *Builder) Run() (TokenBuffer, error) {
 	tokens := make([]Token, 0)
 
 	wordBytes := make([]byte, 0)
@@ -35,6 +34,5 @@ func (b *Builder) Run() ([]Token, error) {
 		tokens = append(tokens, NewToken(string(wordBytes)))
 	}
 
-	b.tokens = tokens
-	return tokens, nil
+	return newTokenBuffer(tokens), nil
 }
