@@ -12,12 +12,19 @@ func newTokenBuffer(tokens []Token) TokenBuffer {
 	}
 }
 
-func (t *TokenBuffer) NextToken() *Token {
-	if t.cur > len(t.tokens) {
+func (t *TokenBuffer) Current() *Token {
+	if t.cur > len(t.tokens) - 1 {
 		return nil
 	}
 
-	token := t.tokens[t.cur]
+	current := t.tokens[t.cur]
+	return &current
+}
+
+func (t *TokenBuffer) Next() {
 	t.cur = t.cur + 1
-	return &token
+}
+
+func (t *TokenBuffer) End() bool {
+	return t.cur >= len(t.tokens) - 1
 }

@@ -8,7 +8,7 @@ func (b *Builder) SetInput(input []byte) {
 	b.input = input
 }
 
-func (b *Builder) Run() (TokenBuffer, error) {
+func (b *Builder) Run() (*TokenBuffer, error) {
 	tokens := make([]Token, 0)
 
 	wordBytes := make([]byte, 0)
@@ -34,5 +34,6 @@ func (b *Builder) Run() (TokenBuffer, error) {
 		tokens = append(tokens, NewToken(string(wordBytes)))
 	}
 
-	return newTokenBuffer(tokens), nil
+	buffer := newTokenBuffer(tokens)
+	return &buffer, nil
 }
