@@ -1,48 +1,9 @@
 package lexer
 
-const (
-	symbolWhiteSpace         = ' '
-	symbolNewLine            = '\n'
-	symbolBracketOpen        = '('
-	symbolBracketClose       = ')'
-	symbolBracketSquareOpen  = '['
-	symbolBracketSquareClose = ']'
-	symbolBraceOpen          = '{'
-	symbolBraceClose         = '}'
-	symbolPlus               = '+'
-	symbolMinus              = '-'
-	symbolMod                = '%'
-	symbolEqual              = '='
-	symbolStar               = '*'
-	symbolComma              = ','
-	symbolDevide             = '/'
-	symbolSemicolon          = ';'
-	symbolColon              = ':'
-	symbolExclamationMark    = '!'
-	symbolQuestionMark       = '?'
-)
-
 func getAllSpecialSymbols() []byte {
 	return []byte{
-		symbolWhiteSpace,
-		symbolNewLine,
-		symbolBracketOpen,
-		symbolBracketClose,
-		symbolBracketSquareOpen,
-		symbolBracketSquareClose,
-		symbolBraceOpen,
-		symbolBraceClose,
-		symbolPlus,
-		symbolMinus,
-		symbolEqual,
-		symbolStar,
-		symbolComma,
-		symbolDevide,
-		symbolSemicolon,
-		symbolColon,
-		symbolExclamationMark,
-		symbolQuestionMark,
-		symbolMod,
+		' ', '\n', '(', ')', '[', ']', '{', '}', '+', '-',
+		'%', '=', '*', ',', '/', ';', ':', '!', '?',
 	}
 }
 
@@ -57,5 +18,5 @@ func isSpecialSymbol(symbol byte) bool {
 }
 
 func isWhiteSpace(symbol byte) bool {
-	return symbol == symbolWhiteSpace
+	return symbol == ' '
 }

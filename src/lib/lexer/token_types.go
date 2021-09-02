@@ -7,25 +7,29 @@ type TokenType int32
 const (
 	TokenTypeEof TokenType = iota
 	TokenTypeNumber
-	TokenTypeMul
-	TokenTypeAdd
-	TokenTypeSub
-	TokenTypeDiv
-	TokenTypeMod
-	TokenTypeEqual
-	TokenTypeComma
-	TokenTypeBracketOpen
-	TokenTypeBracketClose
-	TokenTypeBracketSquareOpen
-	TokenTypeBracketSquareClose
-	TokenTypeBraceOpen
-	TokenTypeBraceClose
-	TokenTypeSemicolon
-	TokenTypeColon
-	TokenTypeExclamation
-	TokenTypeQuestion
-	TokenTypeUndefined
+	TokenTypeBinaryOp
+	TokenTypeVariable
+	TokenTypeIdentifier
 )
+
+func isBinaryOp(symbol rune) bool {
+	binaryOps := []rune {
+		'+', '-', '*', '/', '=', '%',
+	}
+
+	for _, v := range binaryOps {
+		if v == symbol {
+			return true
+		}
+	}
+
+	return false
+}
+
+func isVariable(data string) bool {
+	return data == "var"
+}
+
 
 func getTokenType(data string) TokenType {
 	if data == "\n" {
@@ -44,43 +48,15 @@ func getTokenType(data string) TokenType {
 
 	if len(data) == 1 {
 		symbol := data[0]
-		switch symbol {
-		case symbolPlus:
-			return TokenTypeAdd
-		case symbolMinus:
-			return TokenTypeSub
-		case symbolStar:
-			return TokenTypeMul
-		case symbolDevide:
-			return TokenTypeDiv
-		case symbolMod:
-			return TokenTypeMod
-		case symbolEqual:
-			return TokenTypeEqual
-		case symbolBracketOpen:
-			return TokenTypeBracketOpen
-		case symbolBracketClose:
-			return TokenTypeBracketClose
-		case symbolComma:
-			return TokenTypeComma
-		case symbolBraceOpen:
-			return TokenTypeBraceOpen
-		case symbolBraceClose:
-			return TokenTypeBraceClose
-		case symbolBracketSquareOpen:
-			return TokenTypeBracketSquareOpen
-		case symbolBracketSquareClose:
-			return TokenTypeBracketSquareClose
-		case symbolSemicolon:
-			return TokenTypeSemicolon
-		case symbolColon:
-			return TokenTypeColon
-		case symbolExclamationMark:
-			return TokenTypeExclamation
-		case symbolQuestionMark:
-			return TokenTypeQuestion
+
+		if isBinaryOp(rune(symbol)) {
+			return TokenTypeBinaryOp
 		}
 	}
 
-	return TokenTypeUndefined
+	if isVariable(data) {
+		return TokenTypeVariable
+	}
+
+	return TokenTypeIdentifier
 }
