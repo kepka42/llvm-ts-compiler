@@ -13,7 +13,7 @@ const (
 )
 
 func isBinaryOp(symbol rune) bool {
-	binaryOps := []rune {
+	binaryOps := []rune{
 		'+', '-', '*', '/', '=', '%',
 	}
 
@@ -29,7 +29,6 @@ func isBinaryOp(symbol rune) bool {
 func isVariable(data string) bool {
 	return data == "var"
 }
-
 
 func getTokenType(data string) TokenType {
 	if data == "\n" {

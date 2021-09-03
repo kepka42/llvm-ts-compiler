@@ -13,7 +13,7 @@ func newTokenBuffer(tokens []Token) TokenBuffer {
 }
 
 func (t *TokenBuffer) Current() *Token {
-	if t.cur > len(t.tokens) - 1 {
+	if t.cur > len(t.tokens)-1 {
 		return nil
 	}
 
@@ -26,5 +26,5 @@ func (t *TokenBuffer) Next() {
 }
 
 func (t *TokenBuffer) End() bool {
-	return t.cur >= len(t.tokens) - 1
+	return t.cur >= len(t.tokens)-1
 }

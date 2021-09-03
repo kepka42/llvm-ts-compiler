@@ -1,6 +1,6 @@
 package node
 
-type Program struct{
+type Program struct {
 	body []Base
 }
 

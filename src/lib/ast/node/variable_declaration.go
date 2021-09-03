@@ -1,7 +1,7 @@
 package node
 
 type VariableDeclaration struct {
-	name string
+	name  string
 	value Base
 }
 
@@ -11,7 +11,7 @@ func (*VariableDeclaration) Type() Type {
 
 func NewNodeVariableDeclaration(name string, value Base) VariableDeclaration {
 	return VariableDeclaration{
-		name: name,
+		name:  name,
 		value: value,
 	}
 }
