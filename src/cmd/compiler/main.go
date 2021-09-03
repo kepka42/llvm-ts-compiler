@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"github.com/kepka42/llvm-ts-compiler/src/lib/ast"
+	"github.com/kepka42/llvm-ts-compiler/src/lib/compiler"
 	"github.com/kepka42/llvm-ts-compiler/src/lib/lexer"
 	"io/ioutil"
 	"os"
@@ -36,5 +37,10 @@ func main() {
 		panic(err)
 	}
 
-	fmt.Println("ready")
+	code, err := compiler.Run(tree)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(code)
 }

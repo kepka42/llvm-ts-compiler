@@ -14,6 +14,10 @@ func NewTree() *Tree {
 	return &Tree{}
 }
 
+func (t *Tree) Root() node.Base {
+	return t.root
+}
+
 func (t *Tree) Build(buffer *lexer.TokenBuffer) error {
 	root, err := builder.RootBuild(buffer)
 	if err != nil {
