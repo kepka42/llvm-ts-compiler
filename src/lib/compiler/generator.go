@@ -21,7 +21,7 @@ func Run(tree *ast.Tree) (string, error) {
 	program := root.(*node.Program)
 
 	for _, val := range program.Body() {
-		if val.Type() == node.TypeVariable {
+		if val.Type() == node.TypeVariableDeclaration {
 			variable := val.(*node.VariableDeclaration)
 			variableValue := variable.Value()
 

@@ -4,7 +4,10 @@ type Type int32
 
 const (
 	TypeProgram Type = iota
-	TypeVariable
+	TypeVariableDeclaration
+	TypeFunctionDeclaration
 	TypeNumber
 	TypeBinaryOp
+	TypeIdentifier
+	TypeBlockStatement
 )

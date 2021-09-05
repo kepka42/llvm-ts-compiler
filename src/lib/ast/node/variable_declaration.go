@@ -6,7 +6,7 @@ type VariableDeclaration struct {
 }
 
 func (*VariableDeclaration) Type() Type {
-	return TypeVariable
+	return TypeVariableDeclaration
 }
 
 func (v *VariableDeclaration) Name() string {
@@ -16,7 +16,6 @@ func (v *VariableDeclaration) Name() string {
 func (v *VariableDeclaration) Value() Base {
 	return v.value
 }
-
 
 func NewNodeVariableDeclaration(name string, value Base) VariableDeclaration {
 	return VariableDeclaration{
